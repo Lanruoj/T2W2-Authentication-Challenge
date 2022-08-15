@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 from flask_marshmallow import Marshmallow
+from marshmallow.validate import Length
 ma = Marshmallow(app)
 
 
@@ -70,7 +71,7 @@ def seed_db():
         country = "USA"
     )
     db.session.add(actor4)
-   
+
     db.session.commit()
     print("Tables seeded") 
 
@@ -82,7 +83,7 @@ def drop_db():
 # MODELS AREA
 
 class Movie(db.Model):
-    __tablename__= "MOVIES"
+    __tablename__ = "MOVIES"
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String())
     genre = db.Column(db.String())
@@ -90,12 +91,18 @@ class Movie(db.Model):
     year = db.Column(db.Integer())
 
 class Actor(db.Model):
-    __tablename__= "ACTORS"
+    __tablename__ = "ACTORS"
     id = db.Column(db.Integer,primary_key=True)  
     first_name = db.Column(db.String())
     last_name = db.Column(db.String())
     gender = db.Column(db.String())
     country = db.Column(db.String())
+
+class User(db.Model):
+    __tablename__ = "USERS"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(), unique=True)
+    password = db.Column(db.String(Length(min=8)))
 
 # SCHEMAS AREA
 

@@ -18,3 +18,9 @@ If everything works fine let's go with the tasks to set up the authentication:
 - Create POST and DELETE methods for Actors and Movies. The routes need to include an id parameter to find the items in the database. Only authenticated users are able to do this actions. Handle the wrong requests with meaningful messages for the user (not authenticated and wrong id)
 
 Challenge completed when an authenticated user is able to create and delete movies and actors, but also when a non authenticated user is not allowed to do that.
+
+# + CHALLENGE ADD-ON:
+
+### Build an API challenge
+* Refactor the app from the previous challenge into a modular application following the MVC pattern as you learned in the lesson.
+* Add any extra features you consider relevant for this API
